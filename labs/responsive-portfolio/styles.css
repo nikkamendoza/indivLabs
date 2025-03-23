@@ -1,1 +1,248 @@
-css
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #000;
+    color: #fff;
+    text-align: center;
+    scroll-behavior: smooth;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: url('/images/cover.jpg') center/cover no-repeat; /* Replace with your image */
+    text-align: flex;
+    position: relative;
+    padding: 20px;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay for contrast */
+}
+
+/* Hero Content */
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    margin: 10px 0;
+    text-transform: uppercase;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+/* Hero Button - Unique Style */
+.hero .btn {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    background: transparent;
+    border: 1px solid;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s ease-in-out, transform 0.2s;
+}
+
+/* Button Hover Effects */
+.hero .btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgb(248, 247, 247);
+    transition: left 0.3s ease-in-out;
+    z-index: -1;
+}
+
+.hero .btn:hover::before {
+    left: 0;
+}
+
+.hero .btn:hover {
+    color: black;
+    transform: scale(1.05);
+}
+
+/* Cool Glow Effect */
+.hero .btn::after {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 10px;
+    filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: -1;
+}
+
+.hero .btn:hover::after {
+    opacity: 1;
+}
+
+
+/* Navigation */
+nav {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    z-index: 2;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease-in-out, transform 0.2s;
+}
+
+nav ul li a:hover {
+    color: #aaa;
+    transform: translateY(-2px);
+}
+
+/* Section Styling */
+.section {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 50px 30px;
+    background: #111;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.05);
+}
+
+/* Skills & Projects Layout */
+.skills .skill-icons, .projects .project-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Project Cards */
+.project {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+    background: #222;
+    transition: transform 0.3s ease-in-out;
+}
+
+.project img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.project:hover {
+    transform: scale(1.05);
+}
+
+.project:hover img {
+    transform: scale(1.1);
+}
+
+/* Overlay */
+.overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+/* Contact Form */
+.contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: auto;
+}
+
+.contact input, .contact textarea {
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background: #1a1a1a;
+    color: white;
+    font-size: 14px;
+    outline: none;
+    transition: background 0.3s ease-in-out;
+}
+
+.contact input:focus, .contact textarea:focus {
+    background: #222;
+}
+
+/* Button */
+.contact button {
+    padding: 12px;
+    background: #444;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+.contact button:hover {
+    background: #555;
+    transform: translateY(-2px);
+}
+
+/* Footer */
+.footer {
+    background: #0d0d0d;
+    padding: 20px;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 14px;
+}
+
+.footer p {
+    margin: 0;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
