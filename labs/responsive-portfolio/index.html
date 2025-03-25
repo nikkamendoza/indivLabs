@@ -1,75 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <!-- Header Section -->
     <header class="hero">
-        <nav>
-            <ul>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="hero-content">
-            <h1>Nikka Mendoza</h1>
-            <p>Creative Developer & Designer</p>
-            <a href="#projects" class="btn">View My Work</a>
-        </div>
+      <nav>
+        <ul>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <label class="theme-switch">
+            <input type="checkbox" id="theme-toggle" />
+            <span class="slider"></span>
+          </label>
+        </ul>
+      </nav>
+      <div class="hero-content">
+        <h1>Nikka Mendoza</h1>
+        <p>Creative Developer & Designer</p>
+        <a href="#projects" class="btn">View My Work</a>
+      </div>
     </header>
 
     <!-- Skills Section -->
     <section id="skills" class="section skills">
-        <h2>Skills</h2>
-        <div class="skill-icons">
-            <div class="skill">🔥 HTML</div>
-            <div class="skill">🎨 CSS</div>
-            <div class="skill">⚙️ Figma</div>
-            <div class="skill">🖌️ UI/UX</div>
-            <div class="skill"> <> Templating</div>
-        </div>
+      <h2>Skills</h2>
+      <ul class="skill-icons">
+        <li class="skill">
+          <figure>
+            <img src="./images/template.png" alt="HTML Icon" />
+            <figcaption>HTML</figcaption>
+          </figure>
+        </li>
+        <li class="skill">
+          <figure>
+            <img src="./images/template.png" alt="CSS Icon" />
+            <figcaption>CSS</figcaption>
+          </figure>
+        </li>
+        <li class="skill">
+          <figure>
+            <img src="./images/template.png" alt="Figma Icon" />
+            <figcaption>Figma</figcaption>
+          </figure>
+        </li>
+        <li class="skill">
+          <figure>
+            <img src="./images/template.png" alt="UI/UX Icon" />
+            <figcaption>UI/UX</figcaption>
+          </figure>
+        </li>
+        <li class="skill">
+          <figure>
+            <img src="./images/template.png" alt="Templating Icon" />
+            <figcaption>Template</figcaption>
+          </figure>
+        </li>
+      </ul>
     </section>
 
     <!-- Projects Section -->
     <section id="projects" class="section projects">
-        <h2>Projects</h2>
-        <div class="project-list">
-            <div class="project">
-                <img src="./images/placeholder.jpg" alt="Project 1">
-                <div class="overlay">Project 1</div>
-            </div>
-            <div class="project">
-                <img src="./images/placeholder.jpg" alt="Project 2">
-                <div class="overlay">Project 2</div>
-            </div>
-            <div class="project">
-                <img src="./images/placeholder.jpg" alt="Project 3">
-                <div class="overlay">Project 3</div>
-            </div>
-        </div>
+      <h2>Projects</h2>
+      <ul class="project-list">
+        <li class="project">
+          <article class="project-card">
+            <figure>
+              <img src="./images/placeholder.jpg" alt="Project 1" />
+            </figure>
+            <header>
+              <h3>Project 1</h3>
+            </header>
+            <p>
+              An e-commerce website designed to facilitate the buying and
+              selling of secondhand items/products.
+            </p>
+            <footer>
+              <a href="#" class="project-link">Go to website</a>
+            </footer>
+          </article>
+        </li>
+        <li class="project">
+          <article class="project-card">
+            <figure>
+              <img src="./images/placeholder.jpg" alt="Project 2" />
+            </figure>
+            <header>
+              <h3>Project 2</h3>
+            </header>
+            <p>
+              A platform for creative professionals to showcase and sell their
+              digital artwork.
+            </p>
+            <footer>
+              <a href="#" class="project-link">Go to website</a>
+            </footer>
+          </article>
+        </li>
+      </ul>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="section contact">
-        <h2>Contact Me</h2>
-        <form>
-            <input type="text" placeholder="Your Name">
-            <input type="email" placeholder="Your Email">
-            <textarea placeholder="Your Message"></textarea>
-            <button type="submit">Send</button>
-        </form>
+      <h2>Contact Me</h2>
+      <form>
+        <input type="text" placeholder="Your Name" />
+        <input type="email" placeholder="Your Email" />
+        <textarea placeholder="Your Message"></textarea>
+        <button type="submit">Send</button>
+      </form>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2025 Your Name. All Rights Reserved.</p>
+      <p>&copy; 2025 Your Name. All Rights Reserved.</p>
     </footer>
-</body>
+  </body>
 </html>
-
