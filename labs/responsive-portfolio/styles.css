@@ -25,7 +25,7 @@
     --ltext-color: #240281;
     --card-bg: #e4e4e4;
     --cardcontainer-bg: #dadada;
-    --primary-color: #01580f;
+    --primary-color: #ff6b6b;
     --heroimg-bg: url("./images/cover1.jpg");
     --hero-bg: rgba(255, 255, 255, 0.3);
     --input-color: rgb(255, 255, 255);
@@ -348,46 +348,58 @@ nav ul li a:hover {
   letter-spacing: 1px;
 }
 
-/* Theme Toggle Switch */
+/* Theme Toggle - Floating Button */
 .theme-switch {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 26px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color); /* Dark Mode Default */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+  
+.theme-switch:hover {
+    transform: scale(1.1);
 }
 
 .theme-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
+/* Circular Button Style */
 .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--primary-color);
-  border-radius: 34px;
-  transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    transition: background 0.3s ease-in-out;
+    border-radius: 50%;
 }
 
-.slider:before {
-  content: "🌙";
-  position: absolute;
-  left: 4px;
-  bottom: 3px;
-  font-size: 14px;
-  transition: 0.3s;
+/* Default: Dark Mode (Moon) */
+.slider::before {
+    content: "🌙";
+    transition: transform 0.3s ease-in-out;
 }
 
-#theme-toggle:checked + .slider {
-  background-color: #ff6b6b;
+/* 🌞 Light Mode - Change Button & Icon */
+body:has(#theme-toggle:checked) .theme-switch {
+    background: #ff6b6b; /* Light Mode Button Color */
 }
 
-#theme-toggle:checked + .slider:before {
-  content: "☀️";
-  transform: translateX(24px);
+body:has(#theme-toggle:checked) .slider::before {
+    content: "☀️";
+    transform: rotate(360deg);
 }
+
