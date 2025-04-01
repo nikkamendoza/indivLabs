@@ -6,14 +6,18 @@
     --text-color: #ffffff;
     --ptext-color: #7c7a7a;
     --ltext-color: #240281;
-    --card-bg: #181515;
-    --cardcontainer-bg: #2c2828;
+    --card-bg: rgba(255, 255, 255, 0.1);
+    --cardcontainer-bg: rgba(255, 255, 255, 0.1);
     --skillcontainer-bg: #2c2828;
     --primary-color: #01580f;
-    --heroimg-bg: url("./images/cover.jpg");
+    --heroimg-bg: url("./images/dino1.jpg");
+    --img-bg: url("./images/black.jpg");
     --hero-bg: rgba(0, 0, 0, 0.6);
     --input-color: black;
     --input-focus: #222;
+    --pr-color: #fff;
+    --border: 1px solid #ffffff;
+
   }
   
   /* light Mode (Activated by Checkbox) */
@@ -24,25 +28,40 @@
     --text-color: #000000;
     --ptext-color: #353434;
     --ltext-color: #240281;
-    --card-bg: #e4e4e4;
-    --cardcontainer-bg: #f3f1f1;
+    --card-bg: rgba(129, 129, 129, 0.1);
+    --cardcontainer-bg: rgba(129, 129, 129, 0.1);
     --skillcontainer-bg: #f3f1f1;
     --primary-color: #ff6b6b;
-    --heroimg-bg: url("./images/cover1.jpg");
+    --heroimg-bg: url("./images/dino2.jpg");
+    --img-bg: url("./images/whitepaper.jpg");
     --hero-bg: rgba(255, 255, 255, 0.3);
     --input-color: rgb(255, 255, 255);
     --input-focus: #eeeeee;
+    --pr-color: #000000;
+    --border: 1px solid #4b4b4b;
   }
   
 /* General Styles */
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
-  background: var(--bg-color);
+  background: var(--img-bg) center;
   color: var(--text-color);
   text-align: center;
   scroll-behavior: smooth;
   transition: background 0.3s, color 0.3s;
+  background-attachment: fixed;
+}
+
+/* General Header Styling */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--bg-color); /* Add your desired background color */
 }
 
 /* Hero Section */
@@ -56,6 +75,7 @@ body {
   text-align: flex;
   position: relative;
   padding: 20px;
+  background-attachment: fixed;
 }
 
 .hero::before {
@@ -69,6 +89,10 @@ body {
 .hero-content {
   position: relative;
   z-index: 1;
+}
+
+.hero-content h1{
+  letter-spacing: 35px;
 }
 
 .hero h1 {
@@ -174,6 +198,50 @@ nav ul li a:hover {
   transform: translateY(-2px);
 }
 
+
+.section-title {
+  position: relative;
+  margin: 0;
+  line-height: 0.8;
+  font-size: 70px;
+  text-align: center;
+  color: var(--pr-color);
+  text-transform: uppercase;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.section-title .stroke {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--pr-color);
+}
+
+.section-title__square {
+  position: absolute;
+  display: inline-block;
+  width: 130px;
+  height: 130px;
+  border: var(--border);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg); /* Rotates by 45 degrees */
+  z-index: -1;
+}
+
+@keyframes scroll-rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.section-title__square {
+  animation: scroll-rotate linear;
+  animation-timeline: scroll();
+}
+
 /* Section Styling */
 .section {
   max-width: 1000px;
@@ -183,6 +251,8 @@ nav ul li a:hover {
   transition: background 0.3s;
   border-radius: 15px;
   box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px); /* Adds a frosted glass effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
 }
 
 /* Skills & Projects Layout */
@@ -233,6 +303,7 @@ nav ul li a:hover {
 .projects {
   text-align: center;
   padding-bottom: 50px;
+  
 }
 
 /* Project List (UL) */
@@ -263,6 +334,8 @@ nav ul li a:hover {
   display: flex;
   flex-direction: column;
   height: 100%;
+  backdrop-filter: blur(4px); /* Adds a frosted glass effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
 }
 
 .project-card:hover {
@@ -271,7 +344,9 @@ nav ul li a:hover {
 
 .project-card figure img {
   width: 100%;
+  max-width: 300px;
   height: 100%;
+  max-height: 300px;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -427,7 +502,7 @@ nav ul li a:hover {
 
 /* Default: Dark Mode (Moon) */
 .slider::before {
-    content: "🌙";
+    content: "☀️";
     transition: transform 0.3s ease-in-out;
 }
 
@@ -437,11 +512,11 @@ body:has(#theme-toggle:checked) .theme-switch {
 }
 
 body:has(#theme-toggle:checked) .slider::before {
-    content: "☀️";
+    content: "🌙";
     transform: rotate(360deg);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .about-content {
     flex-direction: column;
     text-align: center;
@@ -452,6 +527,10 @@ body:has(#theme-toggle:checked) .slider::before {
 
   .section {
     margin: 50px 10px;
+  }
+
+  .hero-content h1{
+    letter-spacing: 0px;
   }
 }
 
