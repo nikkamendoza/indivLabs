@@ -91,15 +91,12 @@ body {
   z-index: 1;
 }
 
-.hero-content h1{
-  letter-spacing: 35px;
-}
-
 .hero h1 {
   font-size: 3rem;
   font-weight: 600;
   margin: 10px 0;
   text-transform: uppercase;
+  letter-spacing: 35px;
 }
 
 .hero p {
@@ -245,7 +242,7 @@ nav ul li a:hover {
 /* Section Styling */
 .section {
   max-width: 1000px;
-  margin: 50px auto;
+  margin: 10px auto;
   padding: 50px 30px;
   background: var(--card-bg);
   transition: background 0.3s;
