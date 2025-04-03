@@ -10,40 +10,33 @@
       rel="stylesheet"
     />
   </head>
-  <body>
-    <!-- Header Section -->
-    <header class="hero header">
-      <nav>
-        <ul>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li>
-            <label class="theme-switch">
-              <input type="checkbox" id="theme-toggle" />
-              <span class="slider"></span>
-            </label>
-          </li>
-        </ul>
-      </nav>
-      <section class="hero-content">
-        <h1>
-          NIKKA MENDOZA
-        </h1>
-        <p>Creative Developer & Designer</p>
-        <a href="#projects" class="btn">View My Work</a>
-      </section>
-    </header>
 
-    <br>
-    <br>
+  <body>
+    <div class="wrapper">
+      <header class="hero header">
+        <nav>
+          <ul>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+          </ul>
+        </nav>
+        <img src="./images/bg1.jpg" class="background" alt="Background" />
+        <img src="./images/a4.png" class="foreground" alt="Foreground" />
+        <section class="hero-content">
+          <h1>NIKKA MENDOZA</h1>
+          <p>Creative Developer & Designer</p>
+          <a href="#projects" class="btn">View My Work</a>
+        </section>
+      </header>
+    </div>
 
     <!-- Introduction Section -->
     <h2 class="section-title">
       abo<span class="stroke">ut</span>
       <span class="section-title__square"></span>
     </h2>
-    <section id="about" class="section about">
+    <section id="about" class="container about">
       <div class="about-content">
         <figure class="profile-image">
           <img src="./images/sungkyung.jpg" alt="Profile Picture" />
@@ -64,67 +57,69 @@
       </div>
     </section>
 
-    <br>
-    <br>
+    <br />
+    <br />
+    <br />
+      <div class="section1">
+        <img src="./images/astro2.png" class="foreground1" alt="" />
+        <!-- Skills Section -->
+        <h2 class="section-title">
+          Skil<span class="stroke">ls</span>
+          <span class="section-title__square"></span>
+        </h2>
+        <section id="skills" class="container skills">
+          <ul class="skill-icons">
+            <li class="skill">
+              <figure>
+                <img src="./images/html.png" alt="HTML Icon" />
+                <figcaption>HTML</figcaption>
+              </figure>
+            </li>
+            <li class="skill">
+              <figure>
+                <img src="./images/css.png" alt="CSS Icon" />
+                <figcaption>CSS</figcaption>
+              </figure>
+            </li>
+            <li class="skill">
+              <figure>
+                <img src="./images/figma.png" alt="Figma Icon" />
+                <figcaption>Figma</figcaption>
+              </figure>
+            </li>
+            <li class="skill">
+              <figure>
+                <img src="./images/uiux.png" alt="UI/UX Icon" />
+                <figcaption>UI/UX</figcaption>
+              </figure>
+            </li>
+            <li class="skill">
+              <figure>
+                <img src="./images/frontend.png" alt="frontend Icon" />
+                <figcaption>Frontend</figcaption>
+              </figure>
+            </li>
+          </ul>
+        </section>
+      </div>
 
-    <!-- Skills Section -->
-    <h2 class="section-title">
-      Skil<span class="stroke">ls</span>
-      <span class="section-title__square"></span>
-    </h2>
-    <section id="skills" class="section skills">
-      <ul class="skill-icons">
-        <li class="skill">
-          <figure>
-            <img src="./images/html.png" alt="HTML Icon" />
-            <figcaption>HTML</figcaption>
-          </figure>
-        </li>
-        <li class="skill">
-          <figure>
-            <img src="./images/css.png" alt="CSS Icon" />
-            <figcaption>CSS</figcaption>
-          </figure>
-        </li>
-        <li class="skill">
-          <figure>
-            <img src="./images/figma.png" alt="Figma Icon" />
-            <figcaption>Figma</figcaption>
-          </figure>
-        </li>
-        <li class="skill">
-          <figure>
-            <img src="./images/uiux.png" alt="UI/UX Icon" />
-            <figcaption>UI/UX</figcaption>
-          </figure>
-        </li>
-        <li class="skill">
-          <figure>
-            <img src="./images/frontend.png" alt="frontend Icon" />
-            <figcaption>Frontend</figcaption>
-          </figure>
-        </li>
-      </ul>
-    </section>
-
-    <br>
-    <br>
+    <br />
+    <br />
+    <br />
 
     <!-- Projects Section -->
+    <h2 class="section-title">
+      Proje<span class="stroke">cts</span>
+      <span class="section-title__square"></span>
+    </h2>
     <section id="projects" class="projects">
-      <h2 class="section-title">
-        Proje<span class="stroke">cts</span>
-        <span class="section-title__square"></span>
-      </h2>
       <ul class="project-list">
         <li class="project">
           <article class="project-card">
             <figure>
               <img src="./images/2ndlife.png" alt="Project 1" />
             </figure>
-            <header>
-              <h3>Project 1</h3>
-            </header>
+            <title><h3>Project 1</h3></title>
             <p>
               An e-commerce website designed to facilitate the buying and
               selling of secondhand items/products.
@@ -139,9 +134,7 @@
             <figure>
               <img src="./images/2ndlife.png" alt="Project 2" />
             </figure>
-            <header>
-              <h3>Project 2</h3>
-            </header>
+            <title><h3>Project 2</h3></title>
             <p>
               A platform for creative professionals to showcase and sell their
               digital artwork.
@@ -156,26 +149,7 @@
             <figure>
               <img src="./images/placeholder.jpg" alt="Project 2" />
             </figure>
-            <header>
-              <h3>Project 2</h3>
-            </header>
-            <p>
-              A platform for creative professionals to showcase and sell their
-              digital artwork.
-            </p>
-            <footer>
-              <a href="#" class="project-link">Go to website</a>
-            </footer>
-          </article>
-        </li>
-        <li class="project">
-          <article class="project-card">
-            <figure>
-              <img src="./images/placeholder.jpg" alt="Project 2" />
-            </figure>
-            <header>
-              <h3>Project 2</h3>
-            </header>
+            <title><h3>Project 2</h3></title>
             <p>
               A platform for creative professionals to showcase and sell their
               digital artwork.
@@ -188,15 +162,16 @@
       </ul>
     </section>
 
-    <br>
-    <br>
+    <br />
+    <br />
+    <br />
 
     <!-- Contact Section -->
     <h2 class="section-title">
       Cont<span class="stroke">act</span>
       <span class="section-title__square"></span>
     </h2>
-    <section id="contact" class="section contact">
+    <section id="contact" class="container contact">
       <form>
         <input type="text" placeholder="Your Name" />
         <input type="email" placeholder="Your Email" />
@@ -205,10 +180,14 @@
       </form>
     </section>
 
+    <label class="theme-switch">
+      <input type="checkbox" id="theme-toggle" />
+      <span class="slider"></span>
+    </label>
+
     <!-- Footer -->
     <footer class="footer">
       <p>&copy; 2025 Nikka Mendoza. All Rights Reserved.</p>
     </footer>
-    
   </body>
 </html>
