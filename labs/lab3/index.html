@@ -1,1 +1,23 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Pathfinding Visualizer</title>
+</head>
+<body>
+  <div id="controls">
+    <button id="set-start">Set Start</button>
+    <button id="set-end">Set End</button>
+    <button id="toggle-wall">Toggle Wall</button>
+    <button id="find-path">Find Path</button>
+    <select id="algorithm">
+      <option value="dijkstra">Dijkstra’s</option>
+    </select>
+  </div>
+  <div id="grid-container"></div>
+  <script src="main.js"></script>
+</body>
+</html>
