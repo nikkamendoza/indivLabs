@@ -1,23 +1,38 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <title>Pathfinding Visualizer</title>
-</head>
-<body>
-  <div id="controls">
-    <button id="set-start">Set Start</button>
-    <button id="set-end">Set End</button>
-    <button id="toggle-wall">Toggle Wall</button>
-    <button id="find-path">Find Path</button>
-    <select id="algorithm">
-      <option value="dijkstra">Dijkstra’s</option>
-    </select>
-  </div>
-  <div id="grid-container"></div>
-  <script src="main.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Pathfinding Visualizer</title>
+  </head>
+  <body>
+    <div id="controls">
+      <button id="set-start">Set Start</button>
+      <button id="set-end">Set End</button>
+      <button id="toggle-wall">Toggle Wall</button>
+      <button id="find-path">Find Path</button>
+      <button id="reset-grid">Reset</button>
+      <label
+        >Rows: <input type="number" id="input-rows" min="5" max="50" value="10"
+      /></label>
+      <label
+        >Cols: <input type="number" id="input-cols" min="5" max="50" value="10"
+      /></label>
+      <button id="resize-grid">Resize Grid</button>
+      <select id="algorithm">
+        <option value="dijkstra">Dijkstra’s</option>
+      </select>
+      <label for="speed-select">Speed:</label>
+      <select id="speed-select">
+        <option value="300">Slow</option>
+        <option value="100" selected>Medium</option>
+        <option value="10">Fast</option>
+      </select>
+      <button id="save-grid">Save Grid</button>
+      <button id="load-grid">Load Grid</button>
+    </div>
+    <div id="grid-container"></div>
+    <script src="main.js"></script>
+  </body>
 </html>
