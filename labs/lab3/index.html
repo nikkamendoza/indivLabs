@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>Pathfinding Visualizer</title>
   </head>
   <body>
@@ -11,31 +12,31 @@
       <!-- Left Sidebar - Main Controls -->
       <div id="controls">
         <div class="logo-container">
-          <span class="logo-placeholder">Logo Placeholder</span>
+          <span class="logo-placeholder"><i class="fas fa-star"></i> Super Pathfinder</span>
         </div>
         <div class="divider"></div>
-        <h3>Controls</h3>
+        <h3><i class="fas fa-gamepad"></i> Controls</h3>
         <div class="control-group">
-          <button id="set-start">Set Start</button>
-          <button id="set-end">Set End</button>
-          <button id="toggle-wall">Toggle Wall</button>
-          <button id="set-weight">Set Weight</button>
-          <button id="reset-grid">Reset Grid</button>
+          <button id="set-start"><i class="fas fa-play"></i> Mario Start</button>
+          <button id="set-end"><i class="fas fa-flag-checkered"></i> Flag End</button>
+          <button id="toggle-wall"><i class="fas fa-border-all"></i> Add Blocks</button>
+          <button id="set-weight"><i class="fas fa-coins"></i> Add Coins</button>
+          <button id="reset-grid"><i class="fas fa-bomb"></i> Clear All</button>
         </div>
         
         <div class="randomizer-section">
-          <h3>Randomize</h3>
+          <h3><i class="fas fa-magic"></i> Power-ups</h3>
           <div class="randomizer-controls">
-            <button id="random-walls">Random Walls</button>
-            <button id="random-weights">Random Weights</button>
-            <button id="random-start-end">Random Start/End</button>
+            <button id="random-walls"><i class="fas fa-border-all"></i> Random Blocks</button>
+            <button id="random-weights"><i class="fas fa-coins"></i> Scatter Coins</button>
+            <button id="random-start-end"><i class="fas fa-random"></i> Warp Points</button>
           </div>
         </div>
 
         <div class="repo-section">
-          <span class="repo-label">View Source Code:</span>
+          <span class="repo-label"><i class="fas fa-code"></i> View Source Code:</span>
           <a href="https://github.com/nikkamendoza/indivLabs.git" target="_blank" class="repo-button button">
-            Repository
+            <i class="fab fa-github"></i> Repository
           </a>
         </div>
       </div>
@@ -43,9 +44,9 @@
       <!-- Center - Grid Section -->
       <div class="grid-section">
         <div class="grid-top-controls">
-          <button id="find-path">Find Path</button>
-          <button id="save-grid">Save Grid</button>
-          <button id="load-grid">Load Grid</button>
+          <button id="find-path"><i class="fas fa-running"></i> Find Path!</button>
+          <button id="save-grid"><i class="fas fa-save"></i> Save Level</button>
+          <button id="load-grid"><i class="fas fa-folder-open"></i> Load Level</button>
         </div>
         <div id="grid-container"></div>
       </div>
@@ -54,80 +55,79 @@
       <div class="right-panel">
         <!-- Legend -->
         <div class="legend">
-          <h3>Legend</h3>
+          <h3><i class="fas fa-scroll"></i> Level Guide</h3>
           <div class="legend-item">
             <div class="cell-example start"></div>
-            <span>Start Node</span>
+            <span>Mario (Start)</span>
           </div>
           <div class="legend-item">
             <div class="cell-example end"></div>
-            <span>End Node</span>
+            <span>Flag (End)</span>
           </div>
           <div class="legend-item">
             <div class="cell-example wall"></div>
-            <span>Wall</span>
+            <span>Brick Block</span>
           </div>
           <div class="legend-item">
             <div class="cell-example weighted" id="legend-weight-example"></div>
-            <span>Weighted Node</span>
+            <span>Coin Block</span>
           </div>
           <div class="legend-item">
             <div class="cell-example visited"></div>
-            <span>Visited Node</span>
+            <span>Visited Path</span>
           </div>
           <div class="legend-item">
             <div class="cell-example path"></div>
-            <span>Path Node</span>
+            <span>Final Path</span>
           </div>
         </div>
 
         <!-- Settings Panel -->
         <div class="settings-panel">
-          <h3>Settings</h3>
+          <h3><i class="fas fa-wrench"></i> Game Settings</h3>
           <div class="settings-group">
             <div class="weight-control">
-              <label for="weight-input">Weight (1-99): </label>
+              <label for="weight-input"><i class="fas fa-coins"></i> Coin Value (1-99): </label>
               <input type="number" id="weight-input" value="5" min="1" max="99">
             </div>
             
             <div class="algorithm-control">
-              <label for="algorithm">Algorithm: </label>
+              <label for="algorithm"><i class="fas fa-microchip"></i> Game Mode: </label>
               <select id="algorithm">
-                <option value="dijkstra">Dijkstra</option>
-                <option value="astar">A* Search</option>
+                <option value="dijkstra">Coin Collector (Dijkstra)</option>
+                <option value="astar">Speed Runner (Astar)</option>
               </select>
             </div>
             
             <div class="speed-control">
-              <label for="speed-select">Speed: </label>
+              <label for="speed-select"><i class="fas fa-tachometer-alt"></i> Game Speed: </label>
               <select id="speed-select">
-                <option value="50">Fast</option>
-                <option value="100" selected>Normal</option>
-                <option value="200">Slow</option>
+                <option value="50">Fast Run</option>
+                <option value="100" selected>Normal Run</option>
+                <option value="200">Slow Run</option>
               </select>
             </div>
 
             <div class="grid-size-control">
-              <label for="input-rows">Grid Size: </label>
+              <label for="input-rows"><i class="fas fa-th"></i> Level Size: </label>
               <div class="size-inputs">
                 <input type="number" id="input-rows" value="10" min="5" max="50" placeholder="Rows">
                 <span>×</span>
                 <input type="number" id="input-cols" value="10" min="5" max="50" placeholder="Cols">
               </div>
-              <button id="resize-grid">Resize</button>
+              <button id="resize-grid"><i class="fas fa-expand-alt"></i> Resize Level</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <script src="main.js"></script>
 
     <!-- Grid Management Modal -->
     <div class="modal-overlay" id="grid-modal">
       <div class="modal">
         <div class="modal-header">
-          <h2 class="modal-title">Saved Grids</h2>
-          <button class="close-modal">&times;</button>
+          <h2 class="modal-title"><i class="fas fa-scroll"></i> Saved Levels</h2>
+          <button class="close-modal"><i class="fas fa-times"></i></button>
         </div>
         <div class="saved-grids" id="saved-grids-list">
           <!-- Grid items will be dynamically added here -->
@@ -137,12 +137,13 @@
 
     <!-- Save Grid Dialog -->
     <div class="save-grid-dialog" id="save-grid-dialog">
-      <h3>Save Grid</h3>
-      <input type="text" id="grid-name-input" placeholder="Enter grid name">
+      <h3><i class="fas fa-save"></i> Save Level</h3>
+      <input type="text" id="grid-name-input" placeholder="Enter level name">
       <div class="dialog-buttons">
-        <button id="cancel-save" class="button">Cancel</button>
-        <button id="confirm-save" class="button">Save</button>
+        <button id="cancel-save" class="button"><i class="fas fa-times"></i> Cancel</button>
+        <button id="confirm-save" class="button"><i class="fas fa-check"></i> Save</button>
       </div>
     </div>
+    <script src="main.js"></script>
   </body>
 </html>

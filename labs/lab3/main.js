@@ -335,12 +335,16 @@ function updateGridsList() {
     .map(([name, grid]) => `
       <div class="grid-item">
         <div class="grid-info">
-          <div class="grid-name">${name}</div>
-          <div class="grid-meta">${grid.rows}×${grid.cols} • ${formatDate(grid.timestamp)}</div>
+          <div class="grid-name"><i class="fas fa-table"></i> ${name}</div>
+          <div class="grid-meta"><i class="fas fa-info-circle"></i> ${grid.rows}×${grid.cols} • ${formatDate(grid.timestamp)}</div>
         </div>
         <div class="grid-actions">
-          <button class="load-grid-btn" onclick="loadSpecificGrid('${name}')">Load</button>
-          <button class="delete-grid-btn" onclick="deleteSpecificGrid('${name}')">Delete</button>
+          <button class="load-grid-btn" onclick="loadSpecificGrid('${name}')">
+            <i class="fas fa-upload"></i> Load
+          </button>
+          <button class="delete-grid-btn" onclick="deleteSpecificGrid('${name}')">
+            <i class="fas fa-trash"></i> Delete
+          </button>
         </div>
       </div>
     `).join('');

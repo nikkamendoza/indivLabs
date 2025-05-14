@@ -1,6 +1,15 @@
 :root {
     --cell-size: 35px;
+    --mario-red: #e52521;
+    --mario-blue: #4a90e2;
+    --mario-yellow: #fbd000;
+    --mario-green: #43b047;
+    --brick-brown: #c4694b;
+    --question-block: #e5bc3b;
+    --pixel-border: 4px;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 * {
     box-sizing: border-box;
@@ -9,11 +18,23 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Press Start 2P', cursive;
     line-height: 1.4;
-    background-color: #f0f2f5;
+    background-color: #6b8cff;
+    background-image: 
+        linear-gradient(
+            rgba(255, 255, 255, 0.1) 1px, 
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.1) 1px, 
+            transparent 1px
+        );
+    background-size: 20px 20px;
     min-height: 100vh;
     margin: 0;
+    font-size: 12px;
 }
 
 .container {
@@ -26,11 +47,15 @@ body {
 
 /* Common Panel Styling */
 .legend, .settings-panel, #controls {
-    background-color: white;
-    padding: 12px;
-    border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    background-color: var(--brick-brown);
+    padding: 16px;
+    border-radius: var(--pixel-border);
+    box-shadow: 
+        inset -4px -4px 0 0 rgba(0, 0, 0, 0.3),
+        inset 4px 4px 0 0 rgba(255, 255, 255, 0.3);
     height: fit-content;
+    border: 4px solid #000;
+    image-rendering: pixelated;
 }
 
 /* Right Panel Layout */
@@ -77,20 +102,18 @@ body {
 
 /* Logo and Divider Styles */
 .logo-container {
-    width: 100%;
-    height: 80px;
-    background-color: #f8f9fa;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 12px;
+    background-color: var(--mario-red);
+    padding: 15px;
+    border-radius: var(--pixel-border);
+    text-align: center;
+    border: 4px solid #000;
+    margin-bottom: 15px;
 }
 
 .logo-placeholder {
-    color: #6c757d;
-    font-size: 1rem;
-    font-weight: 500;
+    color: white;
+    font-size: 14px;
+    text-shadow: 2px 2px 0 #000;
 }
 
 .divider {
@@ -164,20 +187,34 @@ body {
 
 /* Button Styles */
 button {
-    padding: 6px 12px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
+    padding: 8px 12px;
+    border: 4px solid #000;
+    border-radius: var(--pixel-border);
+    background-color: var(--mario-red);
     color: white;
     cursor: pointer;
-    transition: background-color 0.2s;
     width: 100%;
     font-size: 0.85rem;
-    height: 32px;
+    height: 40px;
+    font-family: 'Press Start 2P', cursive;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-transform: uppercase;
+    box-shadow: 
+        inset -3px -3px 0 0 rgba(0, 0, 0, 0.3),
+        inset 3px 3px 0 0 rgba(255, 255, 255, 0.3);
+    transition: transform 0.1s;
 }
 
 button:hover {
-    background-color: #0056b3;
+    transform: scale(1.02);
+    background-color: #ff3e3a;
+}
+
+button:active {
+    transform: scale(0.98);
 }
 
 #reset-grid {
@@ -191,12 +228,14 @@ button:hover {
 /* Form Controls */
 input[type="number"],
 select {
-    padding: 4px 8px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
+    padding: 8px;
+    border: 3px solid #000;
+    border-radius: var(--pixel-border);
+    background-color: white;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
     width: 100%;
-    font-size: 0.85rem;
-    height: 28px;
+    height: 35px;
 }
 
 select {
@@ -209,12 +248,22 @@ label {
     font-size: 0.85rem;
 }
 
+/* Adjust icon sizes in labels */
+label i {
+    margin-right: 4px;
+}
+
 /* Headings */
 h3 {
-    margin-bottom: 10px;
-    color: #2c3e50;
-    font-size: 0.95rem;
-    font-weight: 600;
+    color: white;
+    text-shadow: 2px 2px 0 #000;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+/* Adjust icon sizes in headings */
+h3 i {
+    margin-right: 6px;
 }
 
 /* Grid Container */
@@ -236,14 +285,15 @@ h3 {
 .cell, .cell-example {
     width: var(--cell-size);
     height: var(--cell-size);
-    background-color: white;
-    border: 1px solid #e0e0e0;
+    background-color: #87ceeb;
+    border: 2px solid #000;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     transition: all 0.3s ease;
     font-size: calc(var(--cell-size) * 0.35);
+    image-rendering: pixelated;
 }
 
 .cell {
@@ -257,34 +307,39 @@ h3 {
 
 /* Cell States */
 .cell.wall, .cell-example.wall {
-    background-color: #34495e;
-    border-color: #2c3e50;
+    background-color: var(--brick-brown);
+    background-image: 
+        linear-gradient(45deg, rgba(0,0,0,0.1) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(0,0,0,0.1) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.1) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.1) 75%);
+    background-size: 10px 10px;
 }
 
 .cell.start, .cell-example.start {
-    background-color: #27ae60;
-    border-color: #219a52;
+    background-color: var(--mario-red);
+    background-image: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4) 10%, transparent 20%);
 }
 
 .cell.end, .cell-example.end {
-    background-color: #e74c3c;
-    border-color: #c0392b;
+    background-color: var(--mario-green);
+    background-image: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4) 10%, transparent 20%);
 }
 
 .cell.weighted, .cell-example.weighted {
-    background-color: #f1c40f;
-    border-color: #f39c12;
+    background-color: var(--question-block);
     color: #000;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
 }
 
 .cell.visited, .cell-example.visited {
-    background-color: #9b59b6;
-    border-color: #8e44ad;
+    background-color: var(--mario-blue);
+    animation: coinSpin 0.3s ease-out forwards;
 }
 
 .cell.path, .cell-example.path {
-    background-color: #f39c12;
-    border-color: #f1c40f;
+    background-color: var(--mario-yellow);
+    animation: pathReveal 0.3s ease-out forwards;
 }
 
 /* Legend Styles */
@@ -308,40 +363,25 @@ h3 {
 }
 
 /* Animations */
-@keyframes visitedAnimation {
+@keyframes coinSpin {
+    0% {
+        transform: scale(0.3) rotateY(0deg);
+    }
+    100% {
+        transform: scale(1) rotateY(180deg);
+    }
+}
+
+@keyframes pathReveal {
     0% {
         transform: scale(0.3);
-        background-color: #8e44ad;
     }
     50% {
         transform: scale(1.2);
     }
     100% {
-        transform: scale(1.0);
-        background-color: #9b59b6;
+        transform: scale(1);
     }
-}
-
-.cell.visited {
-    animation: visitedAnimation 0.3s ease-out forwards;
-}
-
-@keyframes pathAnimation {
-    0% {
-        transform: scale(0.3);
-        background-color: #f1c40f;
-    }
-    50% {
-        transform: scale(1.2);
-    }
-    100% {
-        transform: scale(1.0);
-        background-color: #f39c12;
-    }
-}
-
-.cell.path {
-    animation: pathAnimation 0.3s ease-out forwards;
 }
 
 /* Grid Section */
@@ -421,63 +461,84 @@ h3 {
     }
 }
 
-/* Modal Styles */
-.modal-overlay {
+/* Modal Styles - Common */
+.modal-overlay, .save-grid-dialog {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     display: none;
     justify-content: center;
     align-items: center;
     z-index: 1000;
 }
 
-.modal {
-    background-color: white;
+/* Base Modal Style */
+.modal, .save-grid-dialog {
+    background-color: var(--brick-brown);
+    border: 4px solid #000;
+    border-radius: var(--pixel-border);
+    box-shadow: 
+        inset -4px -4px 0 0 rgba(0, 0, 0, 0.3),
+        inset 4px 4px 0 0 rgba(255, 255, 255, 0.3);
     padding: 20px;
-    border-radius: 8px;
+}
+
+.modal {
     width: 90%;
     max-width: 500px;
     max-height: 80vh;
     overflow-y: auto;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.modal-header {
+.save-grid-dialog {
+    width: 300px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+}
+
+/* Modal Headers */
+.modal-header, .save-grid-dialog h3 {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #dee2e6;
+    border-bottom: 2px solid #000;
+    color: white;
+    text-shadow: 2px 2px 0 #000;
 }
 
-.modal-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #2c3e50;
+.modal-title, .save-grid-dialog h3 {
+    font-size: 1.1rem;
     margin: 0;
 }
 
+/* Close Button */
 .close-modal {
     background: none;
     border: none;
     font-size: 1.5rem;
-    color: #6c757d;
+    color: white;
     cursor: pointer;
     padding: 0;
     width: auto;
     height: auto;
+    text-shadow: 2px 2px 0 #000;
 }
 
 .close-modal:hover {
-    color: #343a40;
+    color: var(--mario-yellow);
     background: none;
+    transform: scale(1.1);
 }
 
+/* Grid Items in Load Modal */
 .saved-grids {
     display: flex;
     flex-direction: column;
@@ -488,93 +549,90 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
-    background-color: #f8f9fa;
-    border-radius: 4px;
-    border: 1px solid #dee2e6;
+    padding: 12px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid #000;
+    border-radius: var(--pixel-border);
+    box-shadow: 
+        inset -2px -2px 0 0 rgba(0, 0, 0, 0.3),
+        inset 2px 2px 0 0 rgba(255, 255, 255, 0.3);
 }
 
 .grid-info {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
 }
 
 .grid-name {
-    font-weight: 500;
-    color: #2c3e50;
+    color: white;
+    text-shadow: 1px 1px 0 #000;
+    font-size: 0.9rem;
 }
 
 .grid-meta {
-    font-size: 0.85rem;
-    color: #6c757d;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
 }
 
-.grid-actions {
-    display: flex;
-    gap: 8px;
-}
-
-.grid-actions button {
-    padding: 4px 8px;
-    height: 28px;
-    font-size: 0.85rem;
-}
-
-.load-grid-btn {
-    background-color: #28a745;
-}
-
-.load-grid-btn:hover {
-    background-color: #218838;
-}
-
-.delete-grid-btn {
-    background-color: #dc3545;
-}
-
-.delete-grid-btn:hover {
-    background-color: #c82333;
-}
-
-.no-grids-message {
-    text-align: center;
-    color: #6c757d;
-    padding: 20px;
-    font-style: italic;
-}
-
-/* Save Grid Dialog */
-.save-grid-dialog {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1001;
-    width: 300px;
-}
-
+/* Save Dialog Input */
 .save-grid-dialog input {
     width: 100%;
-    margin: 10px 0;
+    margin: 15px 0;
     padding: 8px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
+    background-color: white;
+    border: 3px solid #000;
+    border-radius: var(--pixel-border);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
 }
 
-.save-grid-dialog .dialog-buttons {
+/* Dialog Buttons */
+.dialog-buttons {
     display: flex;
     justify-content: flex-end;
     gap: 8px;
     margin-top: 15px;
 }
 
-.save-grid-dialog button {
+.dialog-buttons button {
     width: auto;
+    min-width: 100px;
+}
+
+/* Grid Actions */
+.grid-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.grid-actions button {
     padding: 6px 12px;
-} 
+    height: 32px;
+    font-size: 0.75rem;
+}
+
+.load-grid-btn {
+    background-color: var(--mario-green);
+}
+
+.load-grid-btn:hover {
+    background-color: #50c850;
+}
+
+.delete-grid-btn {
+    background-color: var(--mario-red);
+}
+
+.delete-grid-btn:hover {
+    background-color: #ff3e3a;
+}
+
+.no-grids-message {
+    text-align: center;
+    color: white;
+    padding: 20px;
+    font-style: italic;
+    text-shadow: 1px 1px 0 #000;
+}
+
