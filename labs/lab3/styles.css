@@ -1,0 +1,580 @@
+:root {
+    --cell-size: 35px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.4;
+    background-color: #f0f2f5;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 220px 1fr 200px;
+    min-height: 100vh;
+    gap: 12px;
+    padding: 12px;
+}
+
+/* Common Panel Styling */
+.legend, .settings-panel, #controls {
+    background-color: white;
+    padding: 12px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+}
+
+/* Right Panel Layout */
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.legend, .settings-panel {
+    position: relative;
+    width: 100%;
+}
+
+/* Controls Panel */
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.randomizer-section {
+    margin-top: 12px;
+}
+
+.randomizer-section h3 {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.randomizer-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.randomizer-controls button {
+    background-color: #6610f2;
+}
+
+.randomizer-controls button:hover {
+    background-color: #520dc2;
+}
+
+/* Logo and Divider Styles */
+.logo-container {
+    width: 100%;
+    height: 80px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.logo-placeholder {
+    color: #6c757d;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background-color: #dee2e6;
+    margin: 12px 0;
+}
+
+/* Repository Section Styles */
+.repo-section {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid #dee2e6;
+}
+
+.repo-label {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.repo-button {
+    background-color: #6c757d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.repo-button:hover {
+    background-color: #5a6268;
+}
+
+/* Update controls panel to allow for flex positioning */
+#controls {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 24px); /* Account for container padding */
+}
+
+/* Settings Panel */
+.settings-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.weight-control, .algorithm-control, .speed-control, .grid-size-control {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.size-inputs {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 4px 0;
+}
+
+.size-inputs span {
+    color: #666;
+    font-weight: bold;
+}
+
+.size-inputs input {
+    width: calc(50% - 10px);
+}
+
+/* Button Styles */
+button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+    font-size: 0.85rem;
+    height: 32px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#reset-grid {
+    background-color: #dc3545;
+}
+
+#reset-grid:hover {
+    background-color: #c82333;
+}
+
+/* Form Controls */
+input[type="number"],
+select {
+    padding: 4px 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 0.85rem;
+    height: 28px;
+}
+
+select {
+    background-color: white;
+}
+
+label {
+    font-weight: 500;
+    color: #495057;
+    font-size: 0.85rem;
+}
+
+/* Headings */
+h3 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* Grid Container */
+#grid-container {
+    display: grid;
+    gap: 1px;
+    background-color: #ddd;
+    padding: 1px;
+    border-radius: 4px;
+    width: fit-content;
+    height: fit-content;
+    margin: 0;
+    align-self: center;
+    max-width: 600px;
+    max-height: 450px;
+}
+
+/* Cell Styles */
+.cell, .cell-example {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-size: calc(var(--cell-size) * 0.35);
+}
+
+.cell {
+    cursor: pointer;
+}
+
+.cell:hover {
+    transform: scale(1.05);
+    z-index: 1;
+}
+
+/* Cell States */
+.cell.wall, .cell-example.wall {
+    background-color: #34495e;
+    border-color: #2c3e50;
+}
+
+.cell.start, .cell-example.start {
+    background-color: #27ae60;
+    border-color: #219a52;
+}
+
+.cell.end, .cell-example.end {
+    background-color: #e74c3c;
+    border-color: #c0392b;
+}
+
+.cell.weighted, .cell-example.weighted {
+    background-color: #f1c40f;
+    border-color: #f39c12;
+    color: #000;
+}
+
+.cell.visited, .cell-example.visited {
+    background-color: #9b59b6;
+    border-color: #8e44ad;
+}
+
+.cell.path, .cell-example.path {
+    background-color: #f39c12;
+    border-color: #f1c40f;
+}
+
+/* Legend Styles */
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+}
+
+.legend-item:last-child {
+    margin-bottom: 0;
+}
+
+.cell-example {
+    width: 24px !important;
+    height: 24px !important;
+    font-size: 11px !important;
+    cursor: default;
+}
+
+/* Animations */
+@keyframes visitedAnimation {
+    0% {
+        transform: scale(0.3);
+        background-color: #8e44ad;
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1.0);
+        background-color: #9b59b6;
+    }
+}
+
+.cell.visited {
+    animation: visitedAnimation 0.3s ease-out forwards;
+}
+
+@keyframes pathAnimation {
+    0% {
+        transform: scale(0.3);
+        background-color: #f1c40f;
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1.0);
+        background-color: #f39c12;
+    }
+}
+
+.cell.path {
+    animation: pathAnimation 0.3s ease-out forwards;
+}
+
+/* Grid Section */
+.grid-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.grid-top-controls {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.grid-top-controls button {
+    flex: 1;
+}
+
+/* Style variations for the top control buttons */
+#find-path {
+    background-color: #28a745;
+}
+
+#find-path:hover {
+    background-color: #218838;
+}
+
+#save-grid {
+    background-color: #17a2b8;
+}
+
+#save-grid:hover {
+    background-color: #138496;
+}
+
+#load-grid {
+    background-color: #6c757d;
+}
+
+#load-grid:hover {
+    background-color: #5a6268;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .container {
+        grid-template-columns: 200px 1fr 180px;
+        gap: 10px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 10px;
+    }
+
+    .right-panel {
+        gap: 10px;
+    }
+
+    #controls, .legend, .settings-panel {
+        position: static;
+    }
+
+    .grid-section {
+        margin: 10px 0;
+    }
+
+    .grid-top-controls {
+        padding: 0 10px;
+    }
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.modal-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #6c757d;
+    cursor: pointer;
+    padding: 0;
+    width: auto;
+    height: auto;
+}
+
+.close-modal:hover {
+    color: #343a40;
+    background: none;
+}
+
+.saved-grids {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.grid-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    border: 1px solid #dee2e6;
+}
+
+.grid-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.grid-name {
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.grid-meta {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.grid-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.grid-actions button {
+    padding: 4px 8px;
+    height: 28px;
+    font-size: 0.85rem;
+}
+
+.load-grid-btn {
+    background-color: #28a745;
+}
+
+.load-grid-btn:hover {
+    background-color: #218838;
+}
+
+.delete-grid-btn {
+    background-color: #dc3545;
+}
+
+.delete-grid-btn:hover {
+    background-color: #c82333;
+}
+
+.no-grids-message {
+    text-align: center;
+    color: #6c757d;
+    padding: 20px;
+    font-style: italic;
+}
+
+/* Save Grid Dialog */
+.save-grid-dialog {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    width: 300px;
+}
+
+.save-grid-dialog input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.save-grid-dialog .dialog-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.save-grid-dialog button {
+    width: auto;
+    padding: 6px 12px;
+} 
